@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-app
+spec:
+  selector:
+    app: simple-app       # must match deployment.yaml's pod label
+  ports:
+    - port: 3000          # port the Service exposes
+      targetPort: 3000     # container port to forward to (matches containerPort in deployment.yaml)
+  type: ClusterIP          # or NodePort if you want to hit it from outside the cluster
