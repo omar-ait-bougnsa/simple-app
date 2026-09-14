@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-app
+  name: my-app
+  namespace: dev
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: simple-app
+      app: my-app
   template:
     metadata:
       labels:
-        app: simple-app
+        app: my-app
     spec:
       containers:
-        - name: simple-app
-          image: simple-app:v1
-          imagePullPolicy: Never   # 👈 critical - tells k8s "don't pull, use local image"
+        - name: my-app
+          image: nginx:alpine
           ports:
-            - containerPort: 3000
+            - containerPort: 80
